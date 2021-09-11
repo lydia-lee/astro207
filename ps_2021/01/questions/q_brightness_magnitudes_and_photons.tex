@@ -1,0 +1,77 @@
+\qns{Brightness, Magnitudes, and Photons}
+
+\begin{enumerate}
+
+\qitem{
+	\begin{itemize}
+		\item $D_\text{Keck} = 10\si{\meter}$
+	\end{itemize}}
+
+\work{
+	$$F_i = \int_{\lambda_\text{start}}^{\lambda_\text{stop}}F_\lambda(\lambda)\phi(\lambda)d\lambda$$
+
+	Matching $x$-axes for the integral involved interpolating and resampling $F_\lambda$ and $\phi$ over wavelengths $\{\lambda[0], \lambda[1], \ldots , \lambda[N-1]\}$, i.e. 
+	\begin{align*}
+		F_{\lambda,\text{resample}}[i] &= F_\lambda(\lambda[i])\\
+		\phi_\text{resample}[i] &= \phi(\lambda[i])
+	\end{align*}
+
+	I ended up just using the wavelengths provided with the Vega data, so computationally, resampling $F_\lambda$ didn't do anything.
+
+	The total photon flux accounted for changing wavelength and was taken as $$\sum_{i=0}^{N-2} \frac{F_{\lambda,\text{resample}}[i]\phi_\text{resample}[i]}{\frac{hc}{\lambda[i]}}\cdot (\lambda[i+1]-\lambda[i])$$.
+
+	Multiplying the total photon flux by the area of the receiver $A_\text{Keck} = \pi\left(\frac{D_\text{Keck}}{2}\right)^2$ gives the photon count rate.}
+
+\ans{
+	\centering
+	$\text{count rate} \approx 7.3(10^{11}) \frac{\text{photons}}{\si{\second}}$}
+
+
+\newpage
+\qitem{
+	\begin{itemize}
+		\item $x_\text{Vega} = 8\text{pc}$
+		\item $D_\text{Vega} = 2.5R_\odot$
+	\end{itemize}}
+
+\work{
+	First, checking if Vega's size in the sky exceeds the telescope's receiving beam...
+	\begin{multicols}{2}
+		\raggedcolumns
+		\begin{align*}
+			\theta_\text{Vega} &= \arctan\left(\frac{D_\text{Vega}}{x_\text{Vega}}\right)\\
+		\end{align*}
+		\vfill\columnbreak
+		\begin{align*}
+			\theta_\text{beamwidth}(\lambda) &\approx \frac{1.22\lambda}{D_\text{Keck}}
+		\end{align*}
+	\end{multicols}
+	...and it doesn't.
+
+	Using the resampling from earlier,
+	\begin{align*}
+		F_i &= \sum_{i=0}^{N-2} F_{\lambda,\text{resample}}[i]\phi_\text{resample}[i]\cdot (\lambda[i+1]-\lambda[i])\\
+		I_\lambda &= \frac{F_i}{\Delta \lambda \theta_\text{Vega}^2}
+	\end{align*}
+	where $\Delta \lambda$ is the passlength.}
+
+\ans{
+	\centering
+	$I_\lambda \approx 8(10^{13}) \frac{\text{erg}}{\si{\second\cdot\centi\meter^2\cdot\steradian\cdot\centi\meter}}$}
+
+\newpage
+\qitem{}
+
+\work{
+	Halving the distance to Vega still doesn't make it larger than the telescope's receiving beam.
+
+	$P \propto \frac{1}{r^2}$.
+
+	The solid angle that Vega occupies in the sky also scales up by 4$\times$.}
+
+\ans{
+	Halving the distance to Vega would increase the number of photons by 4x.
+	
+	The specific intensity wouldn't change; this is because the solid angle that Vega occupies in the sky ($\theta_\text{Vega}^2$) would scale up by 4$\times$ as well.}
+
+\end{enumerate}

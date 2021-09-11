@@ -1,0 +1,16 @@
+\qns{Blackbody Flux}
+
+\ans{
+	\begin{align*}
+		B_\nu &= \frac{2h\nu^3}{c^2}\frac{1}{e^{\frac{h\nu}{k_BT}}-1}\\
+		\int_{0}^\infty\int_{0}^{2\pi}\int_{0}^{\pi/2}B_\nu\cos\theta\sin\theta d\theta d\phi d\nu &= 2\pi\int_{0}^{\pi/2}\cos\theta\sin\theta d\theta \int_{0}^\infty B_\nu d\nu\\
+			&= 2\pi \cdot \frac{1}{2} \cdot\int_0^\infty \frac{2h\nu^3}{c^2}\frac{1}{e^\frac{h\nu}{k_BT} - 1}d\nu\\
+			&= \pi \int_0^\infty \frac{2h\frac{c^3}{\lambda^3}}{c^2}\frac{1}{e^\frac{hc}{\lambda k_BT}-1} d\nu \\
+			&= \pi \int_0^\infty \frac{2hc^2}{\lambda^5}\frac{1}{e^\frac{hc}{\lambda k_BT}-1} d\lambda \longleftarrow \begin{cases}\nu = \frac{c}{\lambda}\\d\nu = -\frac{c}{\lambda^2}d\lambda\end{cases}\\
+			&= \pi \cdot 2hc^2 \cdot \frac{hc}{k_BT} \cdot \left(\frac{k_BT}{hc}\right)^5 \int_0^\infty \frac{1}{x\left(e^{1/x}-1\right)}dx \longleftarrow \begin{cases}x = \lambda \frac{k_BT}{hc}\\dx = d\lambda\frac{k_BT}{hc}\end{cases}\\
+			&= \pi \cdot \frac{2k_B^4T^4}{h^3c^2}\cdot \frac{\pi^4}{15}\\
+			&= \frac{2\pi^5k_B^4}{15h^3c^2}T^4\\
+			&= \sigma T^4
+	\end{align*}
+\textcolor{white}{And of course I forgot the Jacobian the first time around}
+}

@@ -1,0 +1,40 @@
+\qns{A Simplified Greenhouse Effect}
+
+\work{
+	\textcolor{red}{I suppose we'll assume the atmosphere doesn't emit as a blackbody and Earth doesn't reflect anything coming off of the sun?}
+	\begin{center}
+		\input{./questions/q_simplified_greenhouse_effect_figs/model.tex}
+	\end{center}
+	\begin{align*}
+		F_\text{Earth} &= F_\text{scat} + F_\text{sun}\\
+		F_\text{out} &= F_\text{sun}
+	\end{align*}
+	For scattering, we consider the volume of scatterers with some arbitrary column area and depth $z$.
+	\begin{multicols}{2}
+		\raggedcolumns
+		\begin{center}optically thin atmosphere\end{center}
+		$$z = z_\text{atm}$$
+		\vfill\columnbreak
+		\begin{center}optically thick atmosphere\end{center}
+		$$z = \lambda_\text{mfp} = \frac{1}{n\sigma_\nu} = \frac{z_\text{atm}}{N\sigma_\nu}$$
+	\end{multicols}
+	Considering $j_{\nu,\text{scat}} = n\sigma_\text{scat}J_\nu = \frac{N}{z_\text{atm}}\sigma_\text{scat}J_\nu$,
+	$$j_{\nu,\text{scat}}V_\text{scat} \propto \begin{cases}NJ_\nu & \text{optically thin}\\ J_\nu & \text{optically thick}\end{cases}$$
+	where $J_\nu = KF_\text{Earth}$ for some scalar $K$.
+	\begin{align*}
+		F_\text{Earth} &= F_\text{scat} + F_\text{sun}\\
+		\sigma T_\text{gnd}^4 &= F_\text{scat} + F_\text{sun}\\
+		\sigma T_\text{gnd}^4 &= \begin{cases}
+			\sigma T_\text{gnd}^4C_\text{thin}N + F_\text{sun} & \text{optically thin}\\
+			\sigma T_\text{gnd}^4C_\text{thick} + F_\text{sun} & \text{optically thick}\end{cases}
+	\end{align*}
+	where $C_\text{thick/thin}$ are constants.}
+
+\ans{
+	\centering
+	\begin{align*}
+		T_\text{gnd} &\propto \begin{cases}
+			\sqrt[4]{\frac{1}{1-C_\text{thin}N}} & \text{optically thin}\\
+			\text{constant} & \text{optically thick}
+			\end{cases}
+	\end{align*}}

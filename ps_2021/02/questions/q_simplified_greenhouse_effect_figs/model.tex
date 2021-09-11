@@ -1,0 +1,33 @@
+\begin{tikzpicture}
+		% atmosphere
+		\draw[dashed,line width=0.25mm] (-1,3) coordinate (atTopLeft) 
+			-- ++(4,0) coordinate (atTopRight);
+		\draw[dashed,line width=0.25mm] (atTopLeft)++(0,-1) coordinate (atBotLeft) 
+			-- (atBotLeft-|atTopRight) coordinate (atBotRight);
+		\draw[<->] (atTopLeft) -- (atBotLeft);
+		\draw ($(atTopLeft)!0.5!(atBotLeft)$) node[anchor=east] () {$z_\text{atm}$};
+		
+		% ground
+		\draw[line width=0.25mm] (atBotLeft)++(0,-2) coordinate (gndLeft) 
+			-- (gndLeft-|atTopRight) coordinate (gndRight) node[anchor=west] () {$T_\text{gnd}$};
+		
+		% from sun
+		\draw[->] ($(atTopLeft)!0.2!(atTopRight)$)++(0,1) coordinate (sunStart) 
+			-- (sunStart|-gndLeft) coordinate (sunStop);
+		\draw (sunStart) node[anchor=east] () {$F_\text{sun}$}; 
+
+		% earth blackbody
+		\draw[->] ($(gndRight)!0.2!(gndLeft)$) coordinate (earthStart)
+			-- (earthStart|-atBotRight) coordinate (earthStop);
+		\draw (earthStop) node[anchor=south] () {$F_\text{Earth}=\sigma T_\text{gnd}^4$};
+
+		% scattering
+		\draw[->] ($(atBotLeft)!0.5!(atBotRight)$) coordinate (scatStart)
+			-- (scatStart|-gndLeft) coordinate (scatStop);
+		\draw (scatStart) node[anchor=south] () {$F_\text{scat}$};
+
+		% top of atmosphere
+		\draw[->] (atTopRight-|earthStart) coordinate (outStart)
+			-- (outStart|-sunStart) coordinate (outStop);
+		\draw (outStop) node[anchor=west] () {$F_\text{out}$};
+\end{tikzpicture}
