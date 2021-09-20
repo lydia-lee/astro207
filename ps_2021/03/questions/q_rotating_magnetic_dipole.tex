@@ -1,0 +1,57 @@
+\qns{Rotating Magnetic Dipole}
+
+\begin{enumerate}
+
+\qitem{}
+\work{
+	For electric dipoles:
+	$$P = \frac{2}{3}\frac{|\ddot{\vec{p}}|^2}{c^3}$$
+	For magnetic dipoles:
+	$$P = \frac{2}{3}\frac{|\ddot{\vec{m}}|^2}{c^3}$$
+	$\vec{m}$ is rotating about the axis of rotation
+	\begin{align*}
+		\vec{m} &= \begin{bmatrix}
+				m\sin(\alpha)\cos(\omega t)\\
+				m\sin(\alpha)\sin(\omega t)\\
+				m\cos(\alpha)
+			\end{bmatrix}\\
+		\ddot{\vec{m}} &= \begin{bmatrix}
+				-\omega^2m\sin(\alpha)\cos(\omega t)\\
+				-\omega^2m\sin(\alpha)\sin(\omega t)\\
+				0
+			\end{bmatrix}\\
+		|\ddot{\vec{m}}|^2 &= \omega^4m^2\sin^2(\alpha)
+	\end{align*}
+	Definitely had to look up how to derive the magnetic field from the magnetic dipole
+	\begin{align*}
+		\vec{B} &= \frac{3\hat{r}(\vec{m}\cdot\hat{r}) - \vec{m}}{r^3} \longleftarrow \text{because CGS, that's why}\\
+			&= m\frac{2cos(\theta)\hat{r} + sin(\theta)\hat{\theta}}{r^3}\\
+		B_0 &= m\frac{2}{R^3} \longleftarrow \theta = 0\\
+		m &= \frac{B_0R^3}{2}
+	\end{align*}
+	\begin{align*}
+		P &= \frac{2}{3}\frac{\omega^4\sin^2(\alpha)B_0^2R^6}{4c^3}\\
+			&= \frac{\omega^4\sin^2(\alpha)B_0^2R^6}{6c^3}
+	\end{align*}}
+\ans{
+	$$P = \frac{\omega^4\sin^2(\alpha)B_0^2R^6}{6c^3}$$}
+
+\qitem{}
+\work{
+	\begin{align*}
+		E_\text{rot} &= \frac{1}{2}I\omega^2\\
+			&= \frac{1}{5}MR^2\omega^2\\
+		P &= \dot{E}_\text{rot}\\
+		\frac{\omega^4\sin^2(\alpha)B_0^2R^6}{6c^3} &= \frac{1}{5}MR^2\cdot 2\omega\dot{\omega} = \\
+		\dot{\omega} &= \frac{\omega}{\tau}\\
+		\tau &= \frac{6c^3\cdot \frac{2}{5}}{\omega^2\sin^2(\alpha)B_0^2R^4}
+	\end{align*}}
+\ans{
+	$$\tau = \frac{6c^3\cdot \frac{2}{5}}{\omega^2\sin^2(\alpha)B_0^2R^4}$$}
+
+\qitem{}
+\work{}
+\ans{
+	\textcolor{red}{Numerical value}}
+
+\end{enumerate}

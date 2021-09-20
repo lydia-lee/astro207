@@ -6,35 +6,52 @@
 		\input{./questions/q_simplified_greenhouse_effect_figs/model.tex}
 	\end{center}
 	\begin{align*}
-		F_\text{Earth} &= F_\text{scat} + F_\text{sun}\\
-		F_\text{out} &= F_\text{sun}
+		F_\text{Earth} = \sigma T_\text{gnd}^4 &= F_\text{scat} + F_\text{sun}\\
+		\alpha &= n\sigma_\text{scat} = \frac{N}{z_\text{atm}}\sigma_\text{scat}
 	\end{align*}
-	For scattering, we consider the volume of scatterers with some arbitrary column area and depth $z$.
+	We consider the amount of energy scattered back by a volume of scatterers depth $z$.
 	\begin{multicols}{2}
 		\raggedcolumns
-		\begin{center}optically thin atmosphere\end{center}
+		\begin{center}optically thin\end{center}
 		$$z = z_\text{atm}$$
+		Here we treat some constant fraction of energy which doesn't reach depth $s \in (0,z_\text{atm}]$ can be as scattered and assume extinction along the back-path isn't significant given the short distance.
 		\vfill\columnbreak
-		\begin{center}optically thick atmosphere\end{center}
-		$$z = \lambda_\text{mfp} = \frac{1}{n\sigma_\nu} = \frac{z_\text{atm}}{N\sigma_\nu}$$
+		\begin{center}optically thick\end{center}
+		$$z = \lambda_\text{mfp} = \frac{1}{n\sigma_\text{scat}} = \frac{z_\text{atm}}{N\sigma_\text{scat}}$$
+		This isn't an unreasonable assumption, given backscattering within the atmosphere necessarily deals with extinction with the decaying exponential on the path back out of the atmosphere. 
 	\end{multicols}
-	Considering $j_{\nu,\text{scat}} = n\sigma_\text{scat}J_\nu = \frac{N}{z_\text{atm}}\sigma_\text{scat}J_\nu$,
-	$$j_{\nu,\text{scat}}V_\text{scat} \propto \begin{cases}NJ_\nu & \text{optically thin}\\ J_\nu & \text{optically thick}\end{cases}$$
-	where $J_\nu = KF_\text{Earth}$ for some scalar $K$.
-	\begin{align*}
-		F_\text{Earth} &= F_\text{scat} + F_\text{sun}\\
-		\sigma T_\text{gnd}^4 &= F_\text{scat} + F_\text{sun}\\
-		\sigma T_\text{gnd}^4 &= \begin{cases}
-			\sigma T_\text{gnd}^4C_\text{thin}N + F_\text{sun} & \text{optically thin}\\
-			\sigma T_\text{gnd}^4C_\text{thick} + F_\text{sun} & \text{optically thick}\end{cases}
-	\end{align*}
-	where $C_\text{thick/thin}$ are constants.}
+	\begin{multicols}{2}
+		\raggedcolumns
+		\begin{align*}
+			F_\text{scat} &= F_\text{Earth}\left(1-k_\text{thin}e^{-\alpha z_\text{atm}}\right), 0 < k_\text{thin} < 1\\
+			F_\text{Earth} &= F_\text{Earth}\left(1-k_\text{thin}e^{-\alpha z_\text{atm}}\right) + F_\text{sun}\\
+			\sigma T_\text{gnd}^4 &\propto e^{N\sigma_\text{scat}}
+		\end{align*}
+		\vfill\columnbreak
+		\begin{align*}
+			F_\text{scat} &= F_\text{Earth}(1-k_\text{thick}), 0 < k_\text{thick} < 1/e\\
+			F_\text{Earth}(k_\text{thick}) &= F_\text{sun}\\
+			T_\text{gnd}^4 &\propto \text{constant}
+		\end{align*}
+	\end{multicols}
+	% Considering $j_{\nu,\text{scat}} = n\sigma_\text{scat}J_\nu = \frac{N}{z_\text{atm}}\sigma_\text{scat}J_\nu$,
+	% $$j_{\nu,\text{scat}}V_\text{scat} \propto \begin{cases}NJ_\nu & \text{optically thin}\\ J_\nu & \text{optically thick}\end{cases}$$
+	% where $J_\nu = KF_\text{Earth}$ for some scalar $K$.
+	% \begin{align*}
+	% 	F_\text{Earth} &= F_\text{scat} + F_\text{sun}\\
+	% 	\sigma T_\text{gnd}^4 &= F_\text{scat} + F_\text{sun}\\
+	% 	\sigma T_\text{gnd}^4 &= \begin{cases}
+	% 		\sigma T_\text{gnd}^4C_\text{thin}N + F_\text{sun} & \text{optically thin}\\
+	% 		\sigma T_\text{gnd}^4C_\text{thick} + F_\text{sun} & \text{optically thick}\end{cases}
+	% \end{align*}
+	% where $C_\text{thick/thin}$ are constants.
+}
 
 \ans{
 	\centering
 	\begin{align*}
 		T_\text{gnd} &\propto \begin{cases}
-			\sqrt[4]{\frac{1}{1-C_\text{thin}N}} & \text{optically thin}\\
+			\sqrt[4]{e^{N\sigma_\text{scat}}} & \text{optically thin}\\
 			\text{constant} & \text{optically thick}
 			\end{cases}
 	\end{align*}}

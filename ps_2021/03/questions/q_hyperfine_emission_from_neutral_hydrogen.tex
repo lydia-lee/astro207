@@ -1,0 +1,104 @@
+\qns{Hyperfine Emission from Neutral Hydrogen}
+
+\begin{itemize}
+	\item $\frac{n_1}{n_0} = \frac{g_1}{g_0}e^{-\frac{h\nu}{k_BT_\text{ex}}}$
+	\item $g_0 = 1$, $g_1 = 3$
+	\item $\lambda = 21\si{\centi\meter}$
+\end{itemize}
+
+\begin{enumerate}
+
+\qitem{}
+\work{
+	\begin{align*}
+		T_* &= \frac{h\nu}{k_B}\\
+			&= \frac{hc}{\lambda k_B}
+	\end{align*}}
+\ans{\textcolor{red}{Numerical value}}
+
+\qitem{}
+\work{
+	\begin{align*}
+		\alpha_\nu &= \frac{1}{4\pi}\cdot (n_0 B_{12} - n_1 B_{21})\cdot \frac{1}{\Delta \nu}\cdot h\nu\\
+			&= \frac{1}{4\pi}\cdot B_{21}(n_0 \frac{g_1}{g_0} - n_1) \cdot \frac{1}{\Delta\nu} \cdot h\nu\\
+			&= \frac{1}{4\pi} \cdot B_{21}\left(n_0\frac{g_1}{g_0}\right)\left(1 - e^{-\frac{h\nu}{k_BT_\text{ex}}}\right) \cdot \frac{1}{\Delta\nu} \cdot h\nu\\
+			&= \frac{1}{4\pi} \cdot B_{21}\left(n_0\frac{g_1}{g_0}\right)\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right) \cdot \frac{1}{\Delta\nu} \cdot h\nu\\
+			&= \frac{1}{4\pi}\cdot A_{21}\left(\frac{c^2}{2h\nu^3}\right)\left(n_0\frac{g_1}{g_0}\right)\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right) \cdot \frac{1}{\Delta\nu} \cdot h\nu\\
+			&= \frac{1}{8\pi}A_{21}\lambda^2n_0\frac{g_1}{g_0}\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right)\frac{1}{\Delta\nu}\\
+			&= \frac{3}{8\pi}\frac{A_{21}}{\Delta \nu}\lambda^2n_0\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right)
+	\end{align*}}
+\ans{
+	$$\alpha_\nu = \frac{3}{8\pi}\frac{A_{21}}{\Delta \nu}\lambda^2n_0\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right)$$}
+
+\qitem{}
+\work{
+	\begin{align*}
+		j_\nu &= h\nu \cdot A_{21} \cdot n_1 \cdot \frac{1}{4\pi} \cdot \frac{1}{\Delta \nu}\\
+			&= \frac{hc}{\lambda}\frac{A_{21}}{\Delta\nu}n_1\frac{1}{4\pi}
+	\end{align*}}
+\ans{
+	$$j_\nu = \frac{hc}{\lambda}\frac{A_{21}}{\Delta\nu}n_1\frac{1}{4\pi}$$
+}
+
+\qitem{}
+\work{
+	\begin{align*}
+		S_\nu &= \frac{j_\nu}{\alpha_\nu}\\
+			&= \frac{\frac{hc}{\lambda}\frac{A_{21}}{\Delta\nu}n_1\frac{1}{4\pi}}{\frac{3}{8\pi}\frac{A_{21}}{\Delta \nu}\lambda^2n_0\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right)}\\
+			&= \frac{\frac{hc}{\lambda}\frac{3}{4\pi}\frac{A_{21}}{\Delta\nu}n_0e^{-T_*/T_\text{ex}}}{\frac{3}{8\pi}\frac{A_{21}}{\Delta \nu}\lambda^2n_0\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right)}\\
+			&= \frac{2hc}{\lambda^3}\left(\frac{e^{-T_*/T_\text{ex}}}{1-e^{-T_*/T_\text{ex}}}\right)\\
+			&= \frac{2hc}{\lambda^3}\left(\frac{1}{e^{T_*/T_\text{ex}} - 1}\right)\\
+			&\approx \frac{2hc}{\lambda^3}\left(\frac{T_\text{ex}}{T_*}\right)
+	\end{align*}}
+\ans{
+	$$S_\nu \approx \frac{2hc}{\lambda^3}\left(\frac{T_\text{ex}}{T_*}\right)$$}
+
+\qitem{}
+\work{
+	Assuming no background,
+	\begin{align*}
+		I_\nu(\tau_\nu) &= S_\nu\left(1-e^{-\tau_\nu}\right)\\
+			&\approx S_\nu\tau_\nu\\
+		I_\nu(L) &\approx S_\nu L \alpha_\nu\\
+			&= j_\nu L\\
+			&= L\cdot \frac{hc}{\lambda}\frac{A_{21}}{\Delta\nu}n_1\frac{1}{4\pi}
+	\end{align*}}
+\ans{
+	\centering
+	$I_\nu(L) \approx L\cdot \frac{hc}{\lambda}\frac{A_{21}}{\Delta\nu}n_1\frac{1}{4\pi}$}
+\work{
+	$$I_\nu(L) \approx L\cdot \frac{hc}{\lambda}\frac{A_{21}}{\Delta\nu}n_1\frac{1}{4\pi}$$
+	where $\lambda$ and $A_{21}$ are known leaves $\frac{Ln_1}{\Delta\nu}$, i.e. $\frac{N_1}{\Delta\nu}$}
+\ans{
+	\begin{itemize}
+		\item $N_1$, the column density of atoms in the excited hyperfine level
+		\item $N_0$, the column density of atoms in the ground hyperfine level (via the Boltzmann relationship between $n_0$ and $n_1$)
+	\end{itemize}}
+
+\qitem{\textcolor{white}{blank space}}
+\ans{
+	\centering
+	\begin{align*}
+		\tau_\nu &= \alpha_\nu L\\
+			&= \frac{3}{8\pi}\frac{A_{21}}{\Delta \nu}\lambda^2n_0\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right)
+	\end{align*}
+	Yes, the optical depth depends on $T_\text{ex}$}
+
+\qitem{}
+\work{
+	\begin{align*}
+		\tau_\nu = 1 &= \alpha_\nu L\\
+			&= L\cdot\frac{3}{8\pi}\frac{A_{21}}{\Delta \nu}\lambda^2n_0\left(1 - e^{-\frac{T_*}{T_\text{ex}}}\right)\\
+			&\approx L\cdot\frac{3}{8\pi}\frac{A_{21}}{\Delta \nu}\lambda^2n_0\left(\frac{T_*}{T_\text{ex}}\right)\\
+			&\approx \frac{3L}{8\pi}\frac{A_{21}}{\Delta\nu}\frac{n}{4}\left(\frac{T_*}{T_\text{ex}}\right) \longleftarrow \begin{cases}n &= n_0 + n_1\\
+					&= n_0 + n_0\frac{g_1}{g_0}e^{-T_*/T_\text{ex}}\\
+					&\approx n_0\left(1 + \frac{g_1}{g_0}\right)\\
+					&= 4n_0\\
+				n_0 &\approx \frac{n}{4}
+				\end{cases}\\
+			&\approx \frac{3L}{8\pi}\frac{A_{21}c}{\nu_0 v}\frac{n}{4}\left(\frac{T_*}{T_\text{ex}}\right)\\
+			\frac{1}{L} &\approx \frac{3}{8\pi}\frac{A_{21}}{\lambda \sqrt{\frac{2k_BT}{m}}}\frac{n}{4}\left(\frac{T_*}{T_\text{ex}}\right)
+	\end{align*}}
+\ans{\textcolor{red}{numerical estimate}}
+
+\end{enumerate}
