@@ -15,4 +15,34 @@
 \textcolor{white}{And of course I forgot the Jacobian the first time around}}
 
 \sol{
+	To derive the flux from the Planck Distribution, note that flux has units of erg.\si{\second^{-1}.\centi\meter^{-2}} while the distribution has units of erg.\si{\second^{-1}.\centi\meter^{-2}.\hertz^{-1}.\steradian^{-1}}. So clearly we need to integrate out the frequency and angular dependence.
+	The only catch is that we also need to account for the detector seeing the full blackbody patch directly aove the radiating patch (at $\theta = 0$) but seeing the effective vanishing area ($dA = 0$) off to the side ($\theta = \pi$) ()
+	\begin{figure}[t]
+		\centering
+		\caption{\textcolor{red}{TODO figure}}
+		\label{fig:blackbody_flux}
+	\end{figure}
+	Hence, I need to toss in an extra factor of $2\cos\theta$ to get this right.
+	And since one side is cold, I only integrate $\theta$ up to $\theta = \pi$.
+	Let $\Phi$ be the frequency integral of the Planck distribution at a certain temperature.
+	Then:
+	\begin{align*}
+		\Phi &= \int_0^\infty B_\nu(T)d\nu\\
+			&= \int_0^\infty \frac{2h\nu^3}{c^2}\frac{d\nu}{e^\frac{h\nu}{k_BT} - 1}\\
+			&= \frac{2h}{c^2}\left(\frac{k_BT}{h}\right)^4\int_0^\infty \frac{x^5}{e^{1/x} - 1}dx \longleftarrow \begin{cases}
+					x &= \frac{k_BT}{h\nu}\\
+					dx &= -d\nu \frac{k_BT}{\nu^2}
+				\end{cases}\\
+			&= \frac{2\pi^4}{15}\frac{k_B^4T^4}{c^2h^3} \left[\frac{\text{erg}}{\si{\second\times\centi\meter^2\times\steradian}}\right]
+	\end{align*}
+	So the total flux is
+	\begin{align*}
+		F &= \int B_\nu(T)d\nu\cos\theta d\Omega\\
+			&= \Phi \int_0^{2\pi}d\phi\int_0^{\frac{\pi}{2}}cos\theta\sin\theta d\theta\\
+			&= \pi \Phi \left[\frac{\text{erg}}{\si{\second\times\centi\meter^2}}\right]
+	\end{align*}
+	Plugging in for $\Phi$:
+	\begin{align*}
+		F &= \sigma T^4, \sigma \equiv \frac{2\pi^5}{15}\frac{k_B^4}{c^2h^3}
+	\end{align*}
 }

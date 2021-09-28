@@ -55,3 +55,30 @@
 			\text{constant} & \text{optically thick}
 			\end{cases}
 	\end{align*}}
+
+\sol{
+	If the entire atmosphere is in bolometric (i.e. frequency-integrated or total-energy) equilibrium, then at every point in the atmosphere, the going-down flux of incoming energy must be balanced by the up-going flux of outgoing energy.
+	By the planar symmetry of the problem, we know that there cannot be any dependence on angle or position (other than vertical distance above the plane).
+	Antoehr way of saying this: For every component of flux that is not normal to the plane above some position, a nearby position will have a symmetrical flux that cancels it out.
+
+	At the outermost layer of the atmosphere where there is no backscatter, we must have the incident flux from the sun, $F_\odot$, exactly balanced by the blackbody flux $\sigma_{SB}T^4$.
+	If we are measuring the optical depth for an infrared photon to escape as $\tau = N\sigma$, then the $\tau = 0$ solution is
+	\begin{align*}
+		T &= \left(\frac{F_\odot}{\sigma_{SB}}\right)^\frac{1}{4}
+	\end{align*}
+	In the optically thin regime where $1 \gg \tau > 0$, we star to have some backscatter as infrared photons try to escape, and this backscattered light adds to the incident solar flux.
+	Because we are so optically thin, $e^{-\tau} \approx 1-\tau$, so the flux leaving the outermost layer of the amosphere is attenuated by $1-\tau$ relative to the blackbody flux underneath.
+	This means that $F_\odot = \sigma_{Sb}T^4(1-\tau)$, so
+	\begin{align*}
+		T &= \left(\frac{F_\odot}{\sigma_{SB}(1-N\sigma)}\right)^\frac{1}{4}
+	\end{align*}
+	This obviously perturbs the temperature slightly, but if forced to answer how $T$ scales with $N$, the fact that $N\sigma\ll 1$ means that it is effectively flat (the $N^0$ term dominates the Taylor expansion).
+
+	In the optically thick regime, the exiting blackbody flux is attenuated by $e^{-\tau}$ and it really is in the exponential region this time: $\sigma_{SB}T^4 e^{-\tau} = F_\odot$, so
+	\begin{align*}
+		T &= \left(\frac{F_\odot e^{N\sigma}}{\sigma_{SB}}\right)^\frac{1}{4}
+	\end{align*}
+	This means that $T\propto e^\frac{N\sigma}{4}$.
+
+	The point, in this simplified model, is that temperature goes from flat to exponential very rapidly with increasing column density as we cross the optically thin/thick boundary.
+}

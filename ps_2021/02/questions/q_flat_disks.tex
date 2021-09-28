@@ -23,3 +23,35 @@
 \ans{
 	$$T \approx T_*\left(\frac{R_*}{r}\right)^\frac{3}{4}$$
 }
+
+\sol{
+	Starlight strikes the flat disk not at normal indicdence, but rather at grazing incidence.
+	A quick but crude way to solve this problem proceeds as follows.
+	Imagine that you are a path of unit area lying in the flat disk. 
+	From your perspective, you see the upper half face of the star.
+	Idealize the upper half face of the star as a single point source lying above the disk plane at height $\approx R_*$.
+	We should model this point source as having a luminosity of order $\frac{1}{2}$ the luminosity of the total star, because we can only see the upper half face of the star (if the bottom of the disk were onot there, we could see the entire half face of the star).
+
+	Naively (and incorrectly), we would say that the flux of light from this source, evaluated a distance $r$, would be $\frac{L_*/2}{4\pi r^2}$, where $L_*$ is the total luminosity of the star.
+	But this would be incorrect, because what we really want is the flux of light passing through the flat patch of the disk.
+	This is the light that the disk actually absorbs.
+	The amount of energy crossing the flat patch per time equals $\frac{L_*/2}{4\pi r^2}$ TIMES the sine of the angle at which rays from the point source strike the patch.
+	This angle is not 90\si{\degree} (normal indicidence), but rather is equal to $\approx \frac{R_*}{r}\ll 1$ (Fig. \ref{fig:flat_disks}).
+
+	\begin{figure}[h]
+		\centering
+		\caption{\textcolor{red}{TODO}}
+		\label{fig:flat_disks}
+	\end{figure}
+
+	Therefore, the true flux passing through the patch equals
+	\begin{align*}
+		\frac{L_*/2}{4\pi r^2}\cdot \frac{R_*}{r} &= \sigma T^4 \longleftarrow \text{flux absorbed equal to flux emitted by the patch}\\
+		T &= \left(\frac{1}{2}\right)^\frac{1}{4}T_*\left(\frac{R_*}{r}\right)^\frac{3}{4}\longleftarrow L_* = 4\pi R_*^2\sigma T_*^4
+	\end{align*}
+	Note that the index for the radial scaling is 3/4, not 1/2.
+	The temperature decays more steeply with distance for a flat disk than for, say, a system of planets because rays strike the disk at grazing incidence, not at normal incidence.
+
+	We can redo this problem more carefully by integrating over the upper half face of the star rather than by idealizing the upper half face as a single point source.
+	The result of such an integration is to replace the $(1/2)^\frac{1}{4}$ numerical coefficient above with $\left(\frac{2}{3\pi}\right)^\frac{1}{4}$.
+}
