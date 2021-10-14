@@ -25,19 +25,24 @@
 	\begin{align*}
 	    \frac{n_{J+1}}{n_J} &= \frac{g_{J+1}}{g_J}e^{-\frac{E_{J+1} - E_J}{k_BT}}\\
 			\text{where } E_{J+1} - E_J &= \frac{\hbar^2}{2I}\left[(J+1)(J+2) - J(J+1)\right]\\
-			&= \frac{\hbar^2}{I}(J+1) \longleftarrow \begin{cases}
-				I \approx \mu a_0^2\\
-				\mu \equiv m_O \parallel m_C
-					\end{cases}\\
+			&= \frac{\hbar^2}{I}(J+1) % \longleftarrow \begin{cases}
+				% I \approx \mu x_0^2\\
+				% \mu \equiv m_O \parallel m_C\\
+				% x_0 \approx 2.4a_0
+				% 	\end{cases}\\
 	\end{align*}
-	Sweeping $\frac{n_{J+1}}{n_J}$ with respect to $T$ and choosing $J_\text{infl}=7$ where $\frac{n_{J_\text{infl}}}{n_{J_\text{infl}-1}} > 1$ and $\frac{n_{J_\text{infl}+1}}{n_{J_\text{infl}}} < 1$ yields a rough temperature range
+	Sweeping $\frac{n_{J+1}}{n_J}$ with respect to $T$ and choosing $J_\text{infl}=7$ where $\frac{n_{J_\text{infl}}}{n_{J_\text{infl}-1}} > 1$ and $\frac{n_{J_\text{infl}+1}}{n_{J_\text{infl}}} < 1$ yields a rough temperature range $T\in[288, 365)\si{\kelvin}$
 	\begin{figure}[H]
 		\centering
-		\textcolor{red}{INCLUDE}
+		\includegraphics[width=0.48\textwidth]{./questions/q_good_rovibrations_figs/ans_pop_ratio.png}
+		\includegraphics[width=0.48\textwidth]{./questions/q_good_rovibrations_figs/ans_pop_ratio_zoomed.png}
+		\caption{The population ratios vs. temperature for different values of $J\rightarrow J+1$}
 		\label{fig:ratio_vs_temp}
 	\end{figure}}
 \ans{
-	$$T\in [416, 526)\si{\kelvin}$$
+	\centering
+	Because $n_{J=6} \approx n_{J=7}$
+	$$T \approx 288\si{\kelvin}$$
 }
 
 \qitem{}
@@ -45,32 +50,52 @@
 	Looking up the dipole moment $d_\text{CO} \approx 0.122 \text{ esu.}\si{\centi\meter}$ and calculating values relative to the Lyman-$\alpha$
 	$$A_\text{CO} =  A_{\text{Ly}\alpha}\left(\frac{d_\text{CO}}{d_\text{H}}\right)^2\left(\frac{\omega_\text{CO}}{\omega_{\text{Ly}\alpha}}\right)^3$$
 	with
-	\begin{align*}
+	\begin{align}
 		\omega_\text{CO} &= \frac{(\Delta E)_{\substack{\Delta n=1\\\Delta J=\pm1}}}{\hbar}\\
-			&= \omega_{0,\text{CO}} \pm \frac{\hbar}{I}J_\text{upper}
-	\end{align*}
+			&= \omega_{0,\text{CO}} \pm \frac{\hbar}{I}J_\text{upper} \label{eqn:Iconst}
+	\end{align}
+	Eqn. \ref{eqn:Iconst} assumes a constant moment of inertia.
+	In reality, there will be a change in interatomic distance dependent on $n$, i.e. the moment of inertia will increase with $n$.
 	\begin{figure}[H]
 		\centering
-		\textcolor{red}{INCLUDE}
+		\begin{subfigure}[t]{0.48\linewidth}
+			\centering
+			\includegraphics[width=\textwidth]{./questions/q_good_rovibrations_figs/ans_A_dJp1.png}
+			\caption{}
+			\label{subfig:A_vs_J_plus1}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.48\linewidth}
+			\centering
+			\includegraphics[width=\textwidth]{./questions/q_good_rovibrations_figs/ans_A_dJm1.png}
+			\caption{}
+			\label{subfig:A_vs_J_minus1}
+		\end{subfigure}
 		\label{fig:A_vs_J}
+		\caption{Calculated Einstein A coefficients for the R (\subref{subfig:A_vs_J_plus1}) and P (\subref{subfig:A_vs_J_minus1}) branches}
 	\end{figure}}
 \ans{
 	\centering
-	$A$ varies by more than 10\% over the range of $J$--enough to justify inclusion.}
+	$A$ varies by more than 10\% over the range of $J$---probably enough to warrant inclusion.}
 
 \qitem{}
 \work{
 	\begin{align*}
-		j_\nu &= \frac{h\nu}{4\pi}n_{J_\text{upper}}A_{21}
+		j_\nu &= \frac{h\nu}{4\pi}n_{J_\text{upper}}A_{21}\phi(\nu)
 	\end{align*}
-}
-\ans{}
+	Supposing $\phi(\nu)$ is constant across frequency,}
+\ans{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.8]{./questions/q_good_rovibrations_figs/ans_emissivity_cheating.png}
+		\label{fig:emissivity}
+		\caption{Emissivity assuming $\nu_0 = 2145\si{\centi\meter^{-1}}\cdot c$.}
+	\end{figure}}
 
 \qitem{\textcolor{white}{blep}}
 \ans{
-	A few things weren't accounted for:
+	Some final discrepancies:
 	\begin{itemize}
-		\item non-constant line profile function vs. frequency
-		\item change and asymmetry in the moment of inertia (internuclear separation) with respect to $n$
+		\item non-constant line profile function vs. frequency (i.e. Heisenberg uncertainty and Doppler spread) would have each peak smeared out across frequencies 
+		\item change in the interatomic distance and consequently the moment of inertia with respect to vibrational energy would cause spreading between the peaks of the P branch vs. the R branch
 	\end{itemize}}
 \end{enumerate}
