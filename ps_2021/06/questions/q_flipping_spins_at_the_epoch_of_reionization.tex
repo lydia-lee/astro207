@@ -1,0 +1,169 @@
+\qns{Flipping Spins at the Epoch of Reionization}
+
+When $T \gg T_*$ (i.e. $h\nu_{fs} \ll k_BT$, the Rayleigh-Jeans limit)
+$$I_\nu = \frac{2k_BT_b}{\lambda^2} = \frac{2\nu_{fs}^2}{c^2}k_BT_b$$
+\begin{itemize}
+	\item $T_b$ brightness temperature
+	\item $T_K$ kinetic temperature
+	\item $T_s$ spin temperature
+	\item $T_\gamma$ radiation temperature
+		$$\frac{n_1}{n_0} = \frac{g_1}{g_0}e^{-\frac{h\nu_{fs}}{k_BT_s}}$$
+	\item $T_b$ may not be related to $T_K$
+	\item LTE $\Rightarrow T_s = T_K$ 
+		$$J_\nu(\nu_{fs}) = B_\nu(T_\gamma, \nu_{fs})$$
+	\item CMB: $T_\gamma = 2.7(1+z)$
+\end{itemize}
+
+\begin{enumerate}
+\qitem{
+	\textcolor{white}{blep}}
+\ans{
+	For the blackbody CMB, $T_{b,\text{CMB}} = T_{\gamma,\text{CMB}} (\equiv T_\gamma)$. For the fluctuation in the 21cm line's brightness temperature
+	\begin{align*}
+	    I_\nu(s) &= I_{\nu 0}e^{-\tau} + S_\nu(1-e^{-\tau})\\
+	        &= B_\nu(T_\gamma, \nu_{fs})e^{-\tau} + B_\nu(T_s, \nu_{fs})(1-e^{-\tau})
+	\end{align*}
+	Assuming $h\nu_{fs} \ll k_BT$ for all temperatures of interest and placing the intensity relative to the background CMB
+	\begin{align*}
+	    I_\nu(s) - B_\nu(T_\gamma, \nu_{fs}) &= [B_\nu(T_s, \nu_{fs}) - B_\nu(T_\gamma, \nu_{fs})](1-e^{-\tau})\\
+	    T_b - T_\gamma &= (T_s - T_\gamma)(1-e^{-\tau})
+	\end{align*}}
+
+\newpage
+\qitem{
+	\textcolor{white}{bloop}}
+\ans{
+	\begin{align*}
+	    \frac{n_1}{n_0} &= \frac{g_1}{g_0}e^{-\frac{h\nu_{fs}}{k_BT_s}} \approx \frac{g_1}{g_0}\left(1-\frac{T_*}{T_s}\right)\\
+	    \frac{A_{10}}{B_{10}} &= \frac{2h\nu_{fs}^3}{c^2}\\
+	    B_{01} &= B_{10}\frac{g_1}{g_0}
+	\end{align*}
+	A quick definition of the temperature $T_K$ in a similar vein as the spin temperature--the temperature at which the LTE quantity of exciting and de-exciting collisions per time matches:
+	\begin{align*}
+	    n_0C_{01} &= n_1C_{10}\\
+	    \frac{n_1}{n_0} = \frac{C_{01}}{C_{10}} &= \frac{g_1}{g_0}e^{-T_*/T_K} \approx \frac{g_1}{g_0}\left(1-\frac{T_*}{T_K}\right)
+	\end{align*}
+
+	Now back to the more general statistical equilibrium:
+
+	\begin{align*}
+	    n_0 (B_{01}\overline{J} + C_{01}) &= n_1 (A_{10} + B_{10}\overline{J} + C_{10})\\
+	    \frac{n_1}{n_0} &= \frac{B_{01}\overline{J} + C_{01}}{A_{10} + B_{10}\overline{J} + C_{10}}
+	\end{align*}
+
+	Getting back to the definition of spin temperature:
+
+	\begin{align*}
+	    \frac{n_1}{n_0} &\approx \frac{g_1}{g_0}\left(1-\frac{T_*}{T_s}\right)\\
+	    \frac{g_1}{g_0}\left(1-\frac{T_*}{T_s}\right) &\approx \frac{B_{01}\overline{J} + C_{01}}{A_{10} + B_{10}\overline{J} + C_{10}}\\
+	    \frac{T_*}{T_s} &= 1 - \frac{g_0}{g_1}\frac{B_{01}\overline{J} + C_{01}}{A_{10} + C_{10} + B_{10}\overline{J}}\\
+	    \frac{1}{T_s} &= \frac{1}{T_*} \frac{g_1(A_{10} + C_{10} + B_{10}\overline{J}) - g_0(B_{01}\overline{J} + C_{01})}{g_1(A_{10} + C_{10} + B_{10}\overline{J})}
+	\end{align*}
+
+	Looking at the denominator:
+
+	\begin{align*}
+	    A_{10} + C_{10} + B_{10}\overline{J} &= A_{10}\left(1 + \frac{c^2}{2h\nu_{fs}^3}\overline{J}\right) + C_{10}\\
+	        &= A_{10}\left(1 + \frac{c^2}{2h\nu_{fs}^3}\frac{2\nu_{fs}^2}{c^2}k_BT_\gamma\right) + C_{10}\\
+	        &= A_{10}\left(1 + \frac{T_\gamma}{T_*}\right) + C_{10}\\
+	        &\approx A_{10}\frac{T_\gamma}{T_*} + C_{10}\\
+	        &= A_{10}\frac{T_\gamma}{T_*}\left(1 + x_c\right)
+	\end{align*}
+
+	And going back to the full expression
+
+	\begin{align*}
+	    \frac{1}{T_s} &= \frac{g_1(A_{10} + C_{10} + B_{10}\overline{J}) - g_0(B_{01}\overline{J} + C_{01})}{g_1A_{10}T_\gamma(1+x_c)}\\
+	        &= \frac{g_1(A_{10} + C_{10}) - g_0C_{01}}{g_1A_{10}T_\gamma(1+x_c)}\\
+	        &= \frac{1}{1+x_c}\left(\frac{1}{T_\gamma} + \frac{C_{10}}{A_{10}T_\gamma}\left[1 - \frac{g_0}{g_1}\frac{C_{01}}{C_{10}}\right]\right)\\
+	        &\approx \frac{1}{1+x_c}\left(\frac{1}{T_\gamma} + \frac{x_c}{T_*}\left[1-\left\{1 - \frac{T_*}{T_K}\right\}\right]\right)\\
+	        &= \frac{1}{1+x_c}\left(\frac{1}{T_\gamma} + \frac{x_c}{T_K}\right)
+	\end{align*}
+
+	\textcolor{red}{What is with this alignment? Ragged columns why are you failing me}
+	\begin{multicols}{2}
+		\raggedcolumns
+		$$\lim_{x_c \ll 1}T_s \approx T_\gamma$$
+		which is consistent with excitation and de-excitation being dominated by the $A_{10}$ rather than collisions $C_{10}$.
+		\columnbreak\vfill
+		$$\lim_{x_c \gg 1}T_s \approx T_K$$
+		which is consistent with excitation and de-excitation being collisionally dominated.
+	\end{multicols}}
+
+\newpage
+\qitem{
+	\begin{itemize}
+		\item $\sigma_{10} \approx \pi a_0^2$
+	\end{itemize}}
+\work{
+	\begin{align*}
+	    x_c = \frac{C_{10}}{A_{10}}\frac{T_*}{T_\gamma} &\approx 1\\
+	    C_{10} = n_1\sigma_{10}v &\approx A_{10}\frac{T_\gamma}{T_*}\\
+	    n_1 &\approx \frac{A_{10}}{\sigma_{10}v}\frac{T_\gamma}{T_*}\\
+	        &\approx \frac{A_{10}}{\sigma_{10}\sqrt{\frac{2k_BT_K}{m_H}}}\frac{T_\gamma}{T_*}
+	\end{align*}
+	where $A_{10}$ for the 21\si{\centi\meter} line $\approx 2.85(10^{-15})\si{\second^{-1}}$ % and the value of $n_0$ can be calculated using the Boltzmann relationship with the spin temperature.
+}
+\ans{
+	\centering
+	% \textcolor{red}{check numerical}
+	$$n_\text{1,crit} \approx 1.1(10^{-2})\si{\centi\meter^3}$$
+	% $$n_\text{0,crit} \approx 3.8(10^{3})\si{\centi\meter^3}$$
+}
+
+\newpage
+\qitem{
+	\begin{align*}
+	    \frac{P_{01}}{P_{10}} &= \frac{g_1}{g_0}e^{-\frac{h\nu_{fs}}{k_BT_K}}\\
+	        &\approx \frac{g_1}{g_0}\left(1 - \frac{h\nu_{fs}}{k_BT_K}\right)
+	\end{align*}
+}
+\work{
+	Inserting an additional term to account for Ly-$\alpha$ photons driving transitions
+
+	$$n_0 (B_{01}\overline{J} + C_{01} + P_{01}) = n_1 (A_{10} + B_{10}\overline{J} + C_{10} + P_{10})$$
+
+	Through the same algebra from before, we get
+
+	\begin{align*}
+	    \frac{1}{T_s} &= \frac{1}{1 + x_c + x_\alpha}\left(\frac{1}{T_\gamma} + \frac{x_c + x_\alpha}{T_K}\right)\\
+	    x_\alpha &= \frac{P_{10}}{A_{10}}\frac{T_*}{T_\gamma}
+	\end{align*}}
+\ans{
+	\centering
+	$x_\alpha = \frac{P_{10}}{A_{10}}\frac{T_*}{T_\gamma}$}
+
+\newpage
+\qitem{
+	\textcolor{white}{bloop}}
+\ans{
+	\centering
+	\begin{tabular}{|>{\centering\arraybackslash}m{0.1\textwidth}|>{\centering\arraybackslash}m{0.2\textwidth}|m{0.4\textwidth}|c|}
+		\hline
+		\# & $z$ & \centering Info & $\delta T_b$ \\\hline
+		1 & $200 \leq z \leq 1100$ 	& \begin{itemize}
+				\item $T_s \approx T_K$: from $x_c \gg 1$ because high densty
+				\item $T_K = T_\gamma$: the gas and CMB radiation are thermally coupled
+			\end{itemize} & $\approx 0$\\\hline
+		2 & $40 \leq z \leq 200$ 	& \begin{itemize}
+				\item $T_s \approx T_K$: from $x_c \gg 1$
+				\item $T_K < T_\gamma$: because $T_K$ drops with $z$ quadratically---faster than $T_\gamma$'s linear relationship
+			\end{itemize} & $< 0$\\\hline
+		3 & $30 \leq z \leq 40$		& \begin{itemize}
+				\item $T_s \approx T_\gamma$
+			\end{itemize} & $\approx 0$\\\hline
+		4 & $15 \leq z \leq 30$		& \begin{itemize}
+				\item $T_s \approx T_K$: from $x_\alpha \gg 1$
+				\item $T_K < T_\gamma$
+			\end{itemize} & $< 0$\\\hline
+		5 & $7 \leq z \leq 15$		& \begin{itemize}
+				\item $T_K > T_\gamma$
+				\item $T_s \approx T_K$: from $x_\alpha \gg 1$
+			\end{itemize} & $> 0$\\\hline
+		6 & $z \leq 7$				& \begin{itemize}
+				\item $x_\alpha \ll 1$: With essentially all the neutral hydrogen ionized, there are fewer Lyman-$\alpha$ photons because the hydrogen simply doesn't have electrons to excite.
+				\item $x_c \ll 1$: As the universe expands, the rate of excitations/de-excitation caused by collisions relative to the various Einstein coefficients goes down.
+				\item $T_s \approx T_\gamma$: from $x_\alpha \ll 1$ and $x_c \ll 1$ 
+			\end{itemize} & $\approx 0$\\\hline
+	\end{tabular}}
+\end{enumerate}
