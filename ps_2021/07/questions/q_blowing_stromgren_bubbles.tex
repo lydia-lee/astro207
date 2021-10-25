@@ -1,16 +1,70 @@
 \qns{Blowing Str\"{o}mgren Bubbles}
 
+\begin{itemize}
+	\item Emitting $\eta\, \frac{\text{Lyman limit photons}}{\si{\second}}$
+	\item Infinite hydrogen gas, number density $n$
+\end{itemize}
+
 \begin{enumerate}
 
 \qitem{}
-\work{}
-\ans{}
+\work{
+	\begin{align}
+	    t_\text{rec} &= \frac{\lambda_\text{mfp,rec}}{v_\text{ion-e,rel}}\\
+	        &\approx \frac{\lambda_\text{mfp,rec}}{v_e} \longleftarrow \text{roughly stationary ion}\\
+	    \frac{1}{t_\text{rec}} &= \alpha n_e\\
+	    	&= \langle v \sigma_\text{fb,e}(v)\rangle \cdot n_e\\
+	        &= n_e \left\langle v\sigma_\text{bf}(f)\frac{g_0}{g_+}\left(\frac{hf}{m_ecv}\right)^2 \right\rangle \longleftarrow \text{Milne}\\
+	        &\approx n_e \sigma_{\text{bf,$\chi$}} \frac{g_0}{g_+} \frac{\chi^2}{m_e^2c^2} \left\langle\frac{1}{v}\right\rangle \longleftarrow f = \frac{\chi}{h} \Rightarrow \sigma_\text{bf} = \sigma_{\text{bf},\chi} \approx 6(10^{-18})\si{\centi\meter^2}\\
+	        &= n_e \sigma_\text{bf,$\chi$}\frac{g_0}{g_+}\frac{\chi^2}{m_e^2c^2}\sqrt{\frac{2\pi m_e}{k_BT}}\\
+	        &\approx n\sigma_\text{bf,$\chi$}\frac{g_0}{g_+}\frac{\chi^2}{m_e^2c^2}\sqrt{\frac{2\pi m_e}{k_BT}} \longleftarrow n_e \approx n \text{ within the sphere (nearly fully ionized)}
+	\end{align}
+	\begin{itemize}
+	    \item $\frac{g_0}{g_+} = 2$
+	    \item $\chi = 13.6\si{\electronvolt}$
+	    \item $\sigma_{\text{bf,}\chi} \approx 6\cdot 10^{-8}\si{\centi\meter^2}$
+	\end{itemize}
+	In other words, 
+	$$t_\text{rec} = \frac{1}{n_e\alpha} \approx \frac{1}{n\alpha}$$
+	where most everything above was just about solving for $\alpha$.}
+\ans{
+	\centering
+	$$t_\text{rec} \approx \frac{1}{n\alpha} \approx 74,000\text{ years}$$}
 
 \qitem{}
-\work{}
-\ans{}
+\work{
+	The time it takes a photon at the edge of the bubble to encounter a neutral to ionize:
+	\begin{align}
+	    t_\text{ion} &= \frac{\lambda_\text{mfp,photon}}{c}\\
+	        &= \frac{1}{cn_0\sigma_\text{bf,$\chi$}}\\
+	        &\ll t_\text{rec}
+	\end{align}
+	Because the timescale of radiative recombination is long, we assume each photon ionizes an atom basically immediately after being emitted and that radiative recombination is negligible.
+	That said, we're interested in how long it takes to emit enough photons to fill the sphere.
+	\begin{align}
+	    \eta t_\text{bubble} &= n\frac{4}{3}\pi r^3\\
+	    t_\text{bubble} &= \frac{n\frac{4}{3}\pi r^3}{\eta}
+	\end{align}
+	where $r$ is the radius of the bubble, found by equating the photoionization rate to recombination within the sphere (after the bubble has formed)
+	\begin{align}
+	    \eta &= \frac{4}{3}\pi r^3 \cdot n_en_+\alpha\\
+	    r &= \left(\frac{\eta}{\frac{4}{3}\pi n_en_+\alpha}\right)^\frac{1}{3}\\
+	        &\approx \left(\frac{\eta}{\frac{4}{3}\pi n^2\alpha}\right)^\frac{1}{3}
+	\end{align}
+	which leaves us with 
+	\begin{align}
+	    t_\text{bubble} &\approx \frac{1}{n\alpha}
+	\end{align}}
+\ans{
+	\centering
+	$$ t_\text{bubble} \approx \frac{1}{n\alpha}$$}
 
 \qitem{}
-\work{}
-\ans{}
+\work{
+	Probably around one mean free path of a photon $\lambda_\text{mfp,photon} = \frac{1}{n_0\sigma_{\nu,\text{H}}} \approx \frac{1}{n_0\sigma_{\text{bf,}\chi}}$, where $n_0 = kn, k<1$ correction since a nontrivial portion of atoms are ionized}
+\ans{
+	\centering
+	$$\ell_\text{boundary} \approx \lambda_\text{mfp,photon} \approx \frac{1}{kn\sigma_{\text{bf,}\chi}}$$
+	$$k \approx 0.5$$
+}
 \end{enumerate}

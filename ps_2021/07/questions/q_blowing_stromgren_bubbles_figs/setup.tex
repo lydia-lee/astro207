@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+
+\node[circle,draw,fill, scale=1] (star) {};
+\node[circle,scale=9] (arrowEnds) {};
+\node[circle,draw,dashed,scale=10] (bubble) {};
+
+\foreach \i in {north,south,east,west,north west,north east,south west,south east}{
+	\draw [->] (star.\i) -- (arrowEnds.\i);
+}
+% \draw [->] (star.north) -- (arrowEnds.north);
+% \draw [->] (star.south) -- (arrowEnds.south);
+% \draw [->] (star.east) -- (arrowEnds.east);
+% \draw [->] (star.west) -- (arrowEnds.west);
+
+\end{tikzpicture}
