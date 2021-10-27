@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage{../../timestamp}
+\usepackage{../../astro207}
+\usepackage{../../markup}
+\usepackage{../../fa21}
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.geometric,arrows,automata}
+\usepackage{color,hyperref,listings,enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage{bm}
+\usepackage[american,siunitx]{circuitikz}
+\lstset{basicstyle=\ttfamily}
+\newcommand{\fillin}[1]{\underline{\hskip #1}}
+\newcommand{\doublehrule}{\hrule \vskip 0.02in \hrule}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+  \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=blue
+}
+
+\begin{document}
+
+\def\title{Problem Set 8}
+% \config{hwnum}{1}
+% \config{homework-due}{08/31/2018 23:59}
+% \config{grades-due}{09/04/2018 23:59}
+
+\newcommand{\qitem}{\qpart\item}
+
+\renewcommand{\labelenumi}{(\arabic{enumi})} % change default enum format to (1)
+\renewcommand{\theenumi}{(\arabic{enumi})} % fix reference format accordingly.
+\renewcommand{\labelenumii}{\roman{enumii}.} % second level labels.
+\renewcommand{\theenumii}{\roman{enumii}.}
+
+\maketitle
+
+\begin{qunlist}
+\input{./questions/q_saha_and_the_redshift_of_recombination}
+\newpage
+\input{./questions/q_pulsar_dispersion_measure}
+\end{qunlist}
+
+\end{document}
