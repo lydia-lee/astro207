@@ -3,20 +3,44 @@
 \begin{itemize}
 	\item electron de Broglie wavelength: $\lambda = \frac{h}{\sqrt{2\pi mk_BT}}$
 	\item electron degeneracy: $\xi \equiv n_e\lambda^3 \approx 4.1(10^{-16})n_eT^{-\frac{3}{2}}$
-	\item $\gamma \equiv \ln(\frac{1}{\xi})$
-	\item Assume $U_*(T) \propto T^0, \approx 1$
+	\item $\gamma \equiv \ln\left(\frac{1}{\xi}\right) \approx 10$-$30$
+	\item Assume $U_x(T) \propto T^0, \approx 1$
 \end{itemize}
 
 \begin{enumerate}
-\qitem{}
-\work{}
-\ans{}
+\qitem{\textcolor{white}{bloop}}
+\ans{
+	From Saha
+	\begin{align*}
+		\frac{n_{j+1}n_e}{n_j} &= \left(\frac{2\pi m_ek_BT}{h^2}\right)^\frac{3}{2}\left(\frac{2U_{j+1}(T)}{U_j(T)}\right)e^{-\frac{\chi}{k_BT}}\\
+		\frac{n_{j+1}}{n_j} &= \frac{1}{\xi}\frac{2U_{j+1}(T)}{U_j(T)}e^{-\frac{\chi}{k_BT}}\\
+		0 &\approx \gamma - \frac{\chi}{k_BT} \longleftarrow n_{j+1} \approx n_j\\
+		k_BT &\approx \frac{\chi}{\gamma}
+	\end{align*}}
 
 \qitem{}
-\work{}
-\ans{}
+\work{
+	\textcolor{red}{I don't understand how $\frac{\Delta T}{T} \approx \left(\frac{d\log\left(\frac{n_{j+1}}{n_j}\right)}{d\log(T)}\right)^{-1}$}}
+\ans{
+	\begin{align*}
+		R \equiv \frac{n_{j+1}}{n_j} &\approx \frac{1}{\xi}e^{-\frac{\chi}{k_BT}}\\
+		\frac{d\ln(R)}{d\ln(T)} &= \frac{d\ln(R)}{dT}\left(\frac{d\ln(T)}{dT}\right)^{-1}\\
+			&\approx \frac{d}{dT}\left[\gamma - \frac{\chi}{k_BT}\right] \cdot T\\
+			&= \left\{\frac{d}{dT}\left[\ln\left(\frac{T^\frac{3}{2}}{4.1(10^{-16}n_e)}\right)\right] + \frac{\chi}{k_BT^2}\right\} \cdot T\\
+			&= \frac{3}{2} + \frac{\chi}{k_BT}\\
+			&\approx \frac{3}{2} + \frac{\chi}{\chi/\gamma}\\
+			&= \frac{3}{2} + \gamma \longleftarrow \gamma \approx 10\text{-}30\\
+			&\approx \gamma\\
+		\frac{\Delta T}{T} \approx \left(\frac{d\ln(R)}{d\ln(T)}\right)^{-1} &\approx \frac{1}{\gamma}
+	\end{align*}}
 
-\qitem{}
-\work{}
-\ans{}
+\qitem{\textcolor{white}{blep}}
+\ans{
+	\centering
+	\begin{align*}
+		\frac{n_{j+1}}{n_j} &= \frac{g_{j+1}}{g_j}e^{-\frac{E_{j+1} - E_j}{k_BT}}\\
+			&\approx e^{-\gamma\frac{E_{j+1}-E_j}{\chi}}\\
+			&\approx e^{-\gamma}\\
+			&\ll 1 \longleftarrow \gamma \gg 1
+	\end{align*}}
 \end{enumerate}
