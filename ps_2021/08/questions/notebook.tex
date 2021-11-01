@@ -1,0 +1,587 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{q\_pulsar\_dispersion\_measure\_ipynb}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{cm}
+        \PY{k+kn}{from} \PY{n+nn}{mpl\PYZus{}toolkits}\PY{n+nn}{.}\PY{n+nn}{mplot3d} \PY{k}{import} \PY{n}{Axes3D}
+        \PY{k+kn}{from} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{stats}\PY{n+nn}{.}\PY{n+nn}{mstats} \PY{k}{import} \PY{n}{gmean}
+        \PY{k+kn}{import} \PY{n+nn}{time}
+        \PY{k+kn}{import} \PY{n+nn}{pylab} \PY{k}{as} \PY{n+nn}{pl}
+        \PY{k+kn}{from} \PY{n+nn}{IPython} \PY{k}{import} \PY{n}{display}
+        
+        \PY{k+kn}{from} \PY{n+nn}{pprint} \PY{k}{import} \PY{n}{pprint}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{float\PYZus{}formatter} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}0:0.2e\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}
+        \PY{n}{np}\PY{o}{.}\PY{n}{set\PYZus{}printoptions}\PY{p}{(}\PY{n}{formatter}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{float\PYZus{}kind}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}\PY{n}{float\PYZus{}formatter}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{q} \PY{o}{=} \PY{l+m+mf}{5e\PYZhy{}10} \PY{c+c1}{\PYZsh{} esu, electron charge}
+        \PY{n}{m\PYZus{}e} \PY{o}{=} \PY{l+m+mf}{1e\PYZhy{}27} \PY{c+c1}{\PYZsh{} g, electron mass}
+        \PY{n}{c} \PY{o}{=} \PY{l+m+mf}{3e10} \PY{c+c1}{\PYZsh{} cm/s, speed of light}
+        \PY{n}{cm2pc} \PY{o}{=} \PY{l+m+mf}{3.24077929e\PYZhy{}19}
+        
+        \PY{n}{prefactor} \PY{o}{=} \PY{n}{q}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{/} \PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{n}{m\PYZus{}e} \PY{o}{*} \PY{n}{c}\PY{p}{)}
+        
+        \PY{k}{def} \PY{n+nf}{estimate\PYZus{}DM}\PY{p}{(}\PY{n}{nu0}\PY{p}{,} \PY{n}{nu1}\PY{p}{,} \PY{n}{t0}\PY{p}{,} \PY{n}{t1}\PY{p}{)}\PY{p}{:}
+            \PY{l+s+sd}{\PYZsq{}\PYZsq{}\PYZsq{}}
+        \PY{l+s+sd}{    Inputs:}
+        \PY{l+s+sd}{        nu0/1: Float. Frequencies (in Hz) of peaks.}
+        \PY{l+s+sd}{        t0/1: Float. Time of arrival of the peaks.}
+        \PY{l+s+sd}{    Returns:}
+        \PY{l+s+sd}{        DM: An estimate of the dispersion measure (i.e. column density of electrons)}
+        \PY{l+s+sd}{        in electrons/cm\PYZca{}2.}
+        \PY{l+s+sd}{    \PYZsq{}\PYZsq{}\PYZsq{}}
+        \PY{c+c1}{\PYZsh{}     prefactor = 4140 * 1e6**2 * cm2pc}
+            \PY{n}{prefactor} \PY{o}{=} \PY{n}{q}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{/} \PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{n}{m\PYZus{}e} \PY{o}{*} \PY{n}{c}\PY{p}{)}
+            \PY{n}{DM} \PY{o}{=} \PY{p}{(}\PY{n}{t1}\PY{o}{\PYZhy{}}\PY{n}{t0}\PY{p}{)} \PY{o}{/} \PY{p}{(}\PY{n}{prefactor} \PY{o}{*} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{nu1}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{\PYZhy{}} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{nu0}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{DM}
+\end{Verbatim}
+
+
+    2
+
+2.1
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{fname\PYZus{}pulsar} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{./pulsar.dat}\PY{l+s+s1}{\PYZsq{}}
+        
+        \PY{c+c1}{\PYZsh{} Getting frequencies}
+        \PY{k}{with} \PY{n+nb}{open}\PY{p}{(}\PY{n}{fname\PYZus{}pulsar}\PY{p}{)} \PY{k}{as} \PY{n}{f}\PY{p}{:}
+            \PY{n}{column\PYZus{}headers} \PY{o}{=} \PY{n}{f}\PY{o}{.}\PY{n}{readlines}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{strip}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{split}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{] [}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{nu\PYZus{}vec} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mf}{1e9}\PY{o}{*}\PY{n+nb}{float}\PY{p}{(}\PY{n}{nu\PYZus{}str}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{GHz}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{replace}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)} \PY{k}{for} \PY{n}{nu\PYZus{}str} \PY{o+ow}{in} \PY{n}{column\PYZus{}headers}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Data}
+        \PY{n}{data\PYZus{}raw} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{loadtxt}\PY{p}{(}\PY{n}{fname\PYZus{}pulsar}\PY{p}{)}
+        
+        \PY{n}{t\PYZus{}vec} \PY{o}{=} \PY{n}{data\PYZus{}raw}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}
+        \PY{n}{t\PYZus{}mesh}\PY{p}{,} \PY{n}{nu\PYZus{}mesh} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{meshgrid}\PY{p}{(}\PY{n}{t\PYZus{}vec}\PY{p}{,} \PY{n}{nu\PYZus{}vec}\PY{o}{/}\PY{l+m+mf}{1e9}\PY{p}{)}
+        \PY{n}{data\PYZus{}pulsar} \PY{o}{=} \PY{n}{data\PYZus{}raw}\PY{p}{[}\PY{p}{:}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}\PY{o}{.}\PY{n}{transpose}\PY{p}{(}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} Plot the surface}
+        \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{subplot\PYZus{}kw}\PY{o}{=}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{projection}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{3d}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+        \PY{n}{surf} \PY{o}{=} \PY{n}{ax}\PY{o}{.}\PY{n}{plot\PYZus{}surface}\PY{p}{(}\PY{n}{t\PYZus{}mesh}\PY{p}{,} \PY{n}{nu\PYZus{}mesh}\PY{p}{,} \PY{n}{data\PYZus{}pulsar}\PY{p}{,} \PY{n}{linewidth}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,} \PY{n}{antialiased}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time [s]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Frequency [GHz]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax}\PY{o}{.}\PY{n}{set\PYZus{}zlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Power [AU]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        
+        \PY{c+c1}{\PYZsh{} for i in range(0, 100, 10):}
+        \PY{c+c1}{\PYZsh{}     plt.figure()}
+        \PY{c+c1}{\PYZsh{}     plt.plot(t\PYZus{}vec, data\PYZus{}pulsar[i])}
+        \PY{c+c1}{\PYZsh{}     plt.title(f\PYZsq{}\PYZob{}nu\PYZus{}vec[i]\PYZcb{} GHz\PYZsq{})}
+        
+        \PY{c+c1}{\PYZsh{} Data too noisy for cross\PYZhy{}correlations of raw data}
+        \PY{c+c1}{\PYZsh{} for d in data\PYZus{}pulsar[11:20]:}
+        \PY{c+c1}{\PYZsh{}     plt.figure()}
+        \PY{c+c1}{\PYZsh{}     cross\PYZus{}corr = np.convolve(data\PYZus{}pulsar[0], d[::\PYZhy{}1], mode=\PYZsq{}same\PYZsq{})}
+        \PY{c+c1}{\PYZsh{}     cross\PYZus{}corr\PYZus{}norm = cross\PYZus{}corr/max(cross\PYZus{}corr)}
+        \PY{c+c1}{\PYZsh{}     plt.plot(t\PYZus{}vec, cross\PYZus{}corr\PYZus{}norm)}
+        
+        \PY{c+c1}{\PYZsh{} print(len(column\PYZus{}headers))}
+        \PY{c+c1}{\PYZsh{} print(len(set(column\PYZus{}headers)))}
+        \PY{c+c1}{\PYZsh{} print(column\PYZus{}headers.index(\PYZsq{}1.022 GHz\PYZsq{}))}
+        \PY{c+c1}{\PYZsh{} print(column\PYZus{}headers[23])}
+        \PY{c+c1}{\PYZsh{} print(column\PYZus{}headers[24])}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} Text(0.5,0,'Power [AU]')
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_4_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{c+c1}{\PYZsh{} Indices of top 2 peaks for a given frequency}
+        \PY{n}{idx\PYZus{}pk\PYZus{}dict} \PY{o}{=} \PY{n+nb}{dict}\PY{p}{(}\PY{p}{)}
+        \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{nu} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{nu\PYZus{}vec}\PY{p}{)}\PY{p}{:}
+            \PY{n}{idx\PYZus{}pk} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}
+            \PY{n}{idx\PYZus{}pk\PYZus{}dict}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{idx\PYZus{}pk}
+            
+        \PY{c+c1}{\PYZsh{} Filter to get (indices of) frequencies which have a single \PYZdq{}clearly\PYZdq{} distinguishable pulse}
+        \PY{c+c1}{\PYZsh{} (defined by a minimum difference in two max peaks\PYZsq{} respective heights)}
+        \PY{c+c1}{\PYZsh{} The keys are the indices matching up to nu\PYZus{}vec.}
+        
+        \PY{c+c1}{\PYZsh{} The threshold for what constitutes a single clearly distinguishable peak}
+        \PY{n}{diff\PYZus{}threshold\PYZus{}dict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{i}\PY{p}{:}\PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{o}{*}\PY{l+m+mf}{0.6} \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{\PYZus{}} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{nu\PYZus{}vec}\PY{p}{)}\PY{p}{\PYZcb{}}
+        
+        \PY{c+c1}{\PYZsh{} The difference between peaks at a given time}
+        \PY{n}{diff\PYZus{}pk\PYZus{}dict} \PY{o}{=} \PY{p}{\PYZob{}}\PY{n}{i}\PY{p}{:}\PY{p}{(}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{idx\PYZus{}pk}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{idx\PYZus{}pk}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{]}\PY{p}{)} \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{idx\PYZus{}pk} \PY{o+ow}{in} \PY{n}{idx\PYZus{}pk\PYZus{}dict}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)}\PY{p}{\PYZcb{}}
+        
+        \PY{c+c1}{\PYZsh{} The indices (in nu\PYZus{}vec) for which the max is sufficiently large relative to other times in the same frequency}
+        \PY{n}{idx\PYZus{}pk\PYZus{}visible\PYZus{}vec} \PY{o}{=} \PY{p}{[}\PY{n}{i} \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{v} \PY{o+ow}{in} \PY{n}{diff\PYZus{}pk\PYZus{}dict}\PY{o}{.}\PY{n}{items}\PY{p}{(}\PY{p}{)} \PY{k}{if} \PY{n}{v}\PY{o}{\PYZgt{}}\PY{o}{=}\PY{n}{diff\PYZus{}threshold\PYZus{}dict}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{]}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{idx\PYZus{}pk\PYZus{}visible\PYZus{}vec}\PY{p}{)}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} print(idx\PYZus{}pk\PYZus{}visible\PYZus{}vec)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+7
+
+    \end{Verbatim}
+
+    Initial Estimate Method 1: Find the Time of Peak for a Given Frequency
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{t\PYZus{}vec}\PY{p}{,} \PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time [s]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Intensity [AU]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Frequency = }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{nu\PYZus{}vec[\PYZhy{}1]*1e\PYZhy{}9\PYZcb{} GHz}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} Text(0.5,1,'Frequency = 2.0 GHz')
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_7_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} Calculate a 2D array of dispersion measures DM where DM\PYZus{}ij = calculated dispersion}
+        \PY{c+c1}{\PYZsh{} measure between the indices i \PYZam{} j of two valid times }
+        \PY{c+c1}{\PYZsh{} (i.e. times which had peaks which met the criteria for being \PYZsq{}big enough\PYZsq{}).}
+        \PY{c+c1}{\PYZsh{} Shave duplicates and the diagonal.}
+        \PY{n}{num\PYZus{}valid} \PY{o}{=} \PY{n+nb}{len}\PY{p}{(}\PY{n}{idx\PYZus{}pk\PYZus{}visible\PYZus{}vec}\PY{p}{)}
+        \PY{n}{DM\PYZus{}array} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{zeros}\PY{p}{(}\PY{p}{(}\PY{n}{num\PYZus{}valid}\PY{p}{,} \PY{n}{num\PYZus{}valid}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{NAN}
+        \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{idx0} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{idx\PYZus{}pk\PYZus{}visible\PYZus{}vec}\PY{p}{)}\PY{p}{:}
+            \PY{k}{for} \PY{n}{j}\PY{p}{,}\PY{n}{idx1} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{idx\PYZus{}pk\PYZus{}visible\PYZus{}vec}\PY{p}{)}\PY{p}{:}
+                \PY{k}{if} \PY{n}{i}\PY{o}{\PYZlt{}}\PY{o}{=}\PY{n}{j}\PY{p}{:}
+                    \PY{k}{continue}
+                \PY{n}{nu0} \PY{o}{=} \PY{n}{nu\PYZus{}vec}\PY{p}{[}\PY{n}{idx0}\PY{p}{]}
+                \PY{n}{nu1} \PY{o}{=} \PY{n}{nu\PYZus{}vec}\PY{p}{[}\PY{n}{idx1}\PY{p}{]}
+                
+                \PY{c+c1}{\PYZsh{} Ignoring duplicated frequencies}
+                \PY{k}{if} \PY{n}{nu0} \PY{o}{==} \PY{n}{nu1}\PY{p}{:}
+                    \PY{k}{continue}
+                    
+                \PY{n}{t0} \PY{o}{=} \PY{n}{t\PYZus{}vec}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{n}{idx0}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+                \PY{n}{t1} \PY{o}{=} \PY{n}{t\PYZus{}vec}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{n}{idx1}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+                \PY{n}{DM\PYZus{}array}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{[}\PY{n}{j}\PY{p}{]} \PY{o}{=} \PY{n}{estimate\PYZus{}DM}\PY{p}{(}\PY{n}{nu0}\PY{p}{,} \PY{n}{nu1}\PY{p}{,} \PY{n}{t0}\PY{p}{,} \PY{n}{t1}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{}         print(f\PYZsq{}\PYZob{}\PYZdq{}\PYZob{}0:2e\PYZcb{}\PYZdq{}.format(nu0)\PYZcb{}/\PYZob{}\PYZdq{}\PYZob{}0:2e\PYZcb{}\PYZdq{}.format(nu1)\PYZcb{} \PYZhy{}\PYZgt{} \PYZob{}DM\PYZus{}array[i][j]\PYZcb{}\PYZsq{})}
+        \PY{c+c1}{\PYZsh{}         if DM\PYZus{}array[i][j] \PYZgt{} 0:}
+        \PY{c+c1}{\PYZsh{}             plt.figure()}
+        \PY{c+c1}{\PYZsh{}             for n in (idx0, idx1):}
+        \PY{c+c1}{\PYZsh{}                 plt.plot(t\PYZus{}vec, data\PYZus{}pulsar[n], label=f\PYZsq{}nu=\PYZob{}\PYZdq{}\PYZob{}0:.3f\PYZcb{}\PYZdq{}.format(nu\PYZus{}vec[n]*1e\PYZhy{}9)\PYZcb{} GHz\PYZsq{})}
+        \PY{c+c1}{\PYZsh{}                 plt.legend()}
+        \PY{c+c1}{\PYZsh{}                 plt.xlabel(\PYZsq{}Time [s]\PYZsq{})}
+        \PY{c+c1}{\PYZsh{}                 plt.ylabel(\PYZsq{}Power [AU]\PYZsq{})}
+        
+        \PY{n}{pprint}\PY{p}{(}\PY{n}{DM\PYZus{}array}\PY{p}{)}
+        \PY{n}{DM\PYZus{}array\PYZus{}frequency} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{DM\PYZus{}array}\PY{p}{,} \PY{n}{copy}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+array([[nan, nan, nan, nan, nan, nan, nan],
+       [5.51e+20, nan, nan, nan, nan, nan, nan],
+       [-1.57e+19, -5.00e+19, nan, nan, nan, nan, nan],
+       [1.60e+21, 1.66e+21, 3.27e+22, nan, nan, nan, nan],
+       [3.21e+20, 3.12e+20, 1.08e+21, -3.13e+21, nan, nan, nan],
+       [6.14e+19, 4.50e+19, 1.63e+20, -2.23e+21, -1.12e+21, nan, nan],
+       [6.59e+20, 6.63e+20, 1.55e+21, -7.40e+20, 2.19e+21, 4.64e+23, nan]])
+
+    \end{Verbatim}
+
+    Initial Estimate Method 2: Use Prior Knowledge (t=0 @ Start of Pulse
+Arrival)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{t\PYZus{}pk\PYZus{}vec} \PY{o}{=} \PY{p}{[}\PY{n}{t\PYZus{}vec}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{)}\PY{p}{]} \PY{k}{for} \PY{n}{i}\PY{p}{,}\PY{n}{\PYZus{}} \PY{o+ow}{in} \PY{n+nb}{enumerate}\PY{p}{(}\PY{n}{nu\PYZus{}vec}\PY{p}{)}\PY{p}{]}
+        
+        \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{nu\PYZus{}vec}\PY{o}{*}\PY{l+m+mf}{1e\PYZhy{}9}\PY{p}{,} \PY{n}{t\PYZus{}pk\PYZus{}vec}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Frequency [GHz]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Time of Peak [s]}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} Text(0,0.5,'Time of Peak [s]')
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    There's not enough rhyme or reason to the above to comfortably throw
+something like least squares at the raw data.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{DM\PYZus{}vec\PYZus{}frequency} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        \PY{k}{for} \PY{n}{idx} \PY{o+ow}{in} \PY{n}{idx\PYZus{}pk\PYZus{}visible\PYZus{}vec}\PY{p}{:}
+            \PY{n}{nu0} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{n}{nu\PYZus{}vec}\PY{p}{)}
+            \PY{n}{nu1} \PY{o}{=} \PY{n}{nu\PYZus{}vec}\PY{p}{[}\PY{n}{idx}\PY{p}{]}
+            \PY{n}{t0} \PY{o}{=} \PY{n}{t\PYZus{}vec}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+            \PY{n}{t1} \PY{o}{=} \PY{n}{t\PYZus{}vec}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{argmax}\PY{p}{(}\PY{n}{data\PYZus{}pulsar}\PY{p}{[}\PY{n}{idx}\PY{p}{]}\PY{p}{)}\PY{p}{]}
+            \PY{n}{DM\PYZus{}vec\PYZus{}frequency}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{estimate\PYZus{}DM}\PY{p}{(}\PY{n}{nu0}\PY{p}{,} \PY{n}{nu1}\PY{p}{,} \PY{n}{t0}\PY{p}{,} \PY{n}{t1}\PY{p}{)}\PY{p}{)}
+        \PY{n}{DM\PYZus{}vec\PYZus{}frequency} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{n}{DM\PYZus{}vec\PYZus{}frequency}\PY{p}{)}
+        \PY{n}{pprint}\PY{p}{(}\PY{n}{DM\PYZus{}vec\PYZus{}frequency}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+array([7.53e+20, 7.60e+20, 1.68e+21, -3.97e+20, 2.37e+21, 1.82e+22,
+       3.21e+21])
+
+    \end{Verbatim}
+
+    General curiosity: You could rotate this and treat it as tracking a
+moving object (where the object's position is the the frequency of the
+peak) with variable acceleration, then throw an extended Kalman filter
+at it to figure out the DM with the initial estimate calculated using
+either of the methods above
+
+    2.2
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{n\PYZus{}e} \PY{o}{=} \PY{o}{.}\PY{l+m+mi}{03} \PY{c+c1}{\PYZsh{} electrons/cm\PYZca{}2}
+         
+         \PY{c+c1}{\PYZsh{} Filtering out intentionally introduced NaNs and impossible DMs}
+         \PY{c+c1}{\PYZsh{} caused by noise overwhelming the real pulse}
+         \PY{n}{DM\PYZus{}vec} \PY{o}{=}  \PY{n}{DM\PYZus{}array\PYZus{}frequency}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)} \PY{c+c1}{\PYZsh{} DM\PYZus{}array\PYZus{}frequency.flatten()/DM\PYZus{}vec\PYZus{}frequency}
+         \PY{n}{DM\PYZus{}vec} \PY{o}{=} \PY{n}{DM\PYZus{}vec}\PY{p}{[}\PY{o}{\PYZti{}}\PY{n}{np}\PY{o}{.}\PY{n}{isnan}\PY{p}{(}\PY{n}{DM\PYZus{}vec}\PY{p}{)}\PY{p}{]}
+         \PY{n}{DM\PYZus{}vec} \PY{o}{=} \PY{n}{DM\PYZus{}vec}\PY{p}{[}\PY{n}{DM\PYZus{}vec} \PY{o}{\PYZgt{}} \PY{l+m+mi}{0}\PY{p}{]}
+         \PY{n}{DM} \PY{o}{=} \PY{n}{gmean}\PY{p}{(}\PY{n}{DM\PYZus{}vec}\PY{p}{)} \PY{c+c1}{\PYZsh{} np.mean/median(DM\PYZus{}vec)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{DM Estimate:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+si}{\PYZob{}0:2e\PYZcb{}}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{.format(DM)\PYZcb{} electrons/cm\PYZca{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{n}{d} \PY{o}{=} \PY{n}{DM}\PY{o}{/}\PY{n}{n\PYZus{}e} \PY{c+c1}{\PYZsh{} cm}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Distance Estimate:}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+si}{\PYZob{}0:2e\PYZcb{}}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{.format(d)\PYZcb{} cm = }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{d*cm2pc\PYZcb{} pc}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+DM Estimate:		1.032229e+21 electrons/cm\^{}2
+Distance Estimate:	3.440765e+22 cm = 11150.758494193946 pc
+
+    \end{Verbatim}
+
+    The value for distance seems high.
+
+    2.3
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{omega\PYZus{}p} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{4}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi} \PY{o}{*} \PY{n}{n\PYZus{}e} \PY{o}{*} \PY{n}{q}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2} \PY{o}{/} \PY{n}{m\PYZus{}e}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Plasma Frequency: }\PY{l+s+s1}{\PYZob{}}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+si}{\PYZob{}0:2e\PYZcb{}}\PY{l+s+s1}{\PYZdq{}}\PY{l+s+s1}{.format(omega\PYZus{}p/(2*np.pi))\PYZcb{} Hz}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Plasma Frequency: 1.545097e+03 Hz
+
+    \end{Verbatim}
+
+    2.4
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{sigma\PYZus{}Thomson} \PY{o}{=} \PY{l+m+mi}{8}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{/}\PY{l+m+mi}{3} \PY{o}{*} \PY{p}{(}\PY{n}{q}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{p}{(}\PY{n}{m\PYZus{}e}\PY{o}{*}\PY{n}{c}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+         \PY{n}{alpha\PYZus{}Thomson} \PY{o}{=} \PY{n}{n\PYZus{}e} \PY{o}{*} \PY{n}{sigma\PYZus{}Thomson}
+         \PY{n}{tau\PYZus{}Thomson} \PY{o}{=} \PY{n}{alpha\PYZus{}Thomson} \PY{o}{*} \PY{n}{d}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Optical Depth: }\PY{l+s+si}{\PYZob{}tau\PYZus{}Thomson\PYZcb{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Optical Depth: 0.0006672518908541399
+
+    \end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
