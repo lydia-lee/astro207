@@ -2,12 +2,51 @@
 
 \begin{enumerate}
 
-\qitem{}
-\work{}
-\ans{}
+\qitem{\textcolor{white}{blep}}
+\ans{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./questions/q_a_compton_monte_carlo_figs/single}
+		\caption{The simulated power spectral density of a single electron with $\gamma = 10$, generated via Monte Carlo sampling of uniformly distributed $\cos\theta_\text{in}$ and $\cos\theta_\text{out}'$. The cutoff (around x-ray frequencies) doesn't seem terribly unreasonable and corresponds to a few hundred eV.}
+	\end{figure}
+}
 
 \qitem{}
-\work{}
-\ans{}
-
+\work{
+	\begin{align*}
+	    \frac{dP}{d\nu} &= \frac{dP}{d\gamma} \cdot \frac{d\gamma}{d\nu}
+	\end{align*}
+	\begin{multicols}{2}
+		\raggedcolumns
+		\begin{align*}
+		    \nu &= \nu_\text{in}\gamma^2(1-\beta\cos\theta_\text{in})(1+\beta\cos\theta_\text{out}')\\
+		        &\approx \nu_\text{in}\gamma^2\\
+		    \frac{d\gamma}{d\nu} &\approx \frac{1}{2\sqrt{\nu_\text{in}}}\nu^{-\frac{1}{2}}
+		\end{align*}
+		\vfill\columnbreak
+		\begin{align*}
+	    \frac{dP}{d\gamma} &= \frac{dN_\gamma}{d\gamma} \cdot P\rvert_\text{single photon}\\
+	        &= N_pA\gamma^{-p} \cdot L_p\gamma^2(1-\beta\cos\theta_\text{in})(1+\beta\cos\theta_\text{out}')(1-e^{-\tau})\\
+	        &\approx N_pA\gamma^{-p} \cdot L_p \gamma^2(1-e^{-\tau})\\
+	        &= N_pL_pA(1-e^{-\tau})\gamma^{2-p}\\
+	        &\approx N_pL_pA(1-e^{-\tau})\left(\frac{\nu}{\nu_\text{in}}\right)^{1-\frac{p}{2}}
+	\end{align*}
+	where 
+	$$A = \frac{1-p}{(\gamma_\text{max})^{1-p} - (\gamma_\text{min})^{1-p}}$$
+	to enforce
+	$$\int_{\gamma_\text{min}}^{\gamma_\text{max}}Ax^{-p}dx = 1$$
+	\end{multicols}
+	When push comes to shove,
+	\begin{align*}
+		\frac{dP}{d\nu} &\propto \nu^{\frac{1-p}{2}}
+	\end{align*}
+	over values of $\nu \in [\nu_\text{in}(\gamma_\text{min})^2, \nu_\text{in}(\gamma_\text{max})^2]$ (roughly). The plot below includes the various constants.}
+\ans{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\textwidth]{./questions/q_a_compton_monte_carlo_figs/ensemble_power}
+		\caption{The simulated power spectral density of an ensemble of electrons with a power law distribution of $\gamma$, i.e. $dN_\gamma = A\gamma^{-p}d\gamma$ when $\gamma_\text{min}\leq\gamma\leq\gamma_\text{max}$. The PSDs for constant, single-valued $\gamma$ at the bounds $\gamma_\text{min}$ and $\gamma_\text{max}$ are included to sanity check the behavior of the Monte Carlo simulated result past the bounds of their respective cutoff frequencies.}
+	\end{figure}}
 \end{enumerate}
+
+\includepdf[pages=-,offset=-2ex -10ex]{./questions/q_a_compton_monte_carlo_figs/q_a_compton_monte_carlo_ipynb.pdf}
