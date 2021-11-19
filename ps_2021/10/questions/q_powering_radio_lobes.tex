@@ -1,0 +1,104 @@
+\qns{Powering Radio Lobes}
+
+% \begin{itemize}
+% 	% \item $L_\nu = 4\pi d^2F_\nu = 5(10^{36})\left(\frac{\nu}{10\si{\mega\hertz}}\right)^{-0.8} \frac{\text{\erg}}{\si{\second\cdot\hertz}}$ @ $d \approx 230$MPc
+% 	\item $nd\gamma = C\gamma^p d\gamma, \gamma > \gamma_\text{min}$
+% \end{itemize}
+
+\begin{enumerate}
+
+%%% 1
+\qitem{}
+\work{
+	Using points $(40\si{\mega\hertz}, 2.3\cdot10^4\text{Jy})$ and $(2\cdot10^4\si{\mega\hertz}, 500\text{Jy})$ on the curve and using
+	\begin{align*}
+		D &\propto \nu^{\frac{1+p}{2}}\\
+		\frac{\Delta(\log D)}{\Delta(\log\nu)} &= \frac{1+p}{2}
+	\end{align*}
+	(where $p < 0$)}
+\ans{
+	\centering
+	\textcolor{red}{TODO numerical}}
+
+%%% 2
+\qitem{}
+\work{
+	\begin{align*}
+		n\cdot d\gamma &= C\gamma^p\cdot d\gamma\\
+		U_e &= \int_{\gamma_\text{min}}^\infty C\gamma^p\cdot d\gamma\\
+			&= C\left(\frac{1}{1+p}\gamma^{1_p}\right)\rvert_{\gamma=\gamma_\text{min}}^{\gamma=\infty}\\
+			&= -C\frac{\gamma_\text{min}^{1+p}}{1+p} \longleftarrow 1+p < 0
+	\end{align*}
+
+	% Pretty sure finding gamma min and C were meant as rhetorical questions (for this part)
+	% Finding $\gamma_\text{min}$ requires knowledge of either the cyclotron frequency or the magnetic field.
+	% \begin{align*}
+	% 	\nu_m \approx 10\si{\mega\hertz} &\approx \gamma_\text{min}^2\nu_\text{cyc}\\
+	% 	\nu_\text{cyc} &= \frac{e}{2\pi m_ec}B
+	% \end{align*}
+
+	% Similarly, finding $C$ requires knowledge of $U_B$ and $\nu_\text{cyc}$
+	}
+\ans{
+	\centering
+	\textcolor{red}{TODO}}
+
+%%% 3
+\qitem{}
+\work{
+	\begin{align*}
+		\nu_\text{cyc} &= \frac{qB}{m_ec}\\
+		U_B &= \frac{B^2}{8\pi}
+	\end{align*}
+
+	\begin{multicols}{2}
+		\raggedcolumns
+		\begin{align*}
+			\nu_m &= \frac{3}{2}\gamma_\text{min}^2\nu_\text{cyc}\sin\alpha\\
+			\gamma_\text{min} &= \sqrt{\frac{2\nu_m}{3\nu_\text{cyc}\sin\alpha}}\\
+				&= A_1\nu_m^\frac{1}{2}B^{-\frac{1}{2}} \text{ where } A_1 \equiv \sqrt{\frac{2m_ec}{3q\sin\alpha}} 
+		\end{align*}
+		\vfill\columnbreak
+		\begin{align*}
+			L_\nu &\approx \frac{2}{3}C\frac{U_B\sigma_Tc}{\nu_\text{cyc}}\left(\frac{\nu}{\nu_\text{cyc}}\right)^\frac{1+p}{2}\times V\\
+			C &\approx \frac{3L_m\nu_\text{cyc}^\frac{3+p}{2}}{2U_B\sigma_Tc\nu_m^\frac{1+p}{2}V}\\
+				&= A_2\frac{L_mB^\frac{-1+p}{2}}{
+				\nu_m^\frac{1+p}{2}V} \text{ where } A_2 \equiv \frac{12\pi\left(\frac{q}{m_ec}\right)^\frac{3+p}{2}}{\sigma_Tc}
+		\end{align*}
+	\end{multicols}
+	\begin{align*}
+		U_e &= \frac{-1}{1+p}C\gamma_\text{min}\\
+			&= A\frac{L_mB^\frac{-2+p}{2}\nu_m^{-\frac{p}{2}}}{V}
+	\end{align*}}
+\ans{\textcolor{red}{check algebra}}
+
+%%% 4
+\qitem{}
+\ans{
+	\begin{align*}
+		E &= 2V(U_e + U_B)\\
+		\frac{dE}{dB} &= 2V\left(\frac{dU_e}{dB} + \frac{dU_B}{dB}\right)\\
+			&= 2V\left(-\frac{3}{2}\frac{U_e}{B} + 2\frac{U_B}{B}\right)\\
+			&= \frac{2V}{B}\left(-\frac{3}{2}U_e + 2U_B\right)
+	\end{align*}
+	Discounting nonphysical limits like $B = \infty$ and $B = 0$,
+	\begin{align*}
+		U_B &= \frac{3}{4}U_e
+	\end{align*}}
+
+%%% 5
+\qitem{}
+\work{}
+\ans{}
+
+%%% 6
+\qitem{}
+\work{}
+\ans{}
+
+%%% 7
+\qitem{}
+\work{}
+\ans{}
+
+\end{enumerate}
