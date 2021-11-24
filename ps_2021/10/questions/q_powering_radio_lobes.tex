@@ -10,10 +10,10 @@
 %%% 1
 \qitem{}
 \work{
-	Using points $(40\si{\mega\hertz}, 2.3\cdot10^4\text{Jy})$ and $(2\cdot10^4\si{\mega\hertz}, 500\text{Jy})$ on the curve and using
+	Using points \textcolor{red}{$(40\si{\mega\hertz}, 2.3\cdot10^4\text{Jy})$ and $(2\cdot10^4\si{\mega\hertz}, 500\text{Jy})$} on the curve and using
 	\begin{align*}
-		D &\propto \nu^{\frac{1+p}{2}}\\
-		\frac{\Delta(\log D)}{\Delta(\log\nu)} &= \frac{1+p}{2}
+		F_\nu &\propto \nu^{\frac{1+p}{2}}\\
+		\frac{\Delta(\log F_\nu)}{\Delta(\log\nu)} &= \frac{1+p}{2}
 	\end{align*}
 	(where $p < 0$)}
 \ans{
@@ -26,7 +26,7 @@
 	\begin{align*}
 		n\cdot d\gamma &= C\gamma^p\cdot d\gamma\\
 		U_e &= \int_{\gamma_\text{min}}^\infty C\gamma^p\cdot d\gamma\\
-			&= C\left(\frac{1}{1+p}\gamma^{1_p}\right)\rvert_{\gamma=\gamma_\text{min}}^{\gamma=\infty}\\
+			&= C\left(\frac{1}{1+p}\gamma^{1+p}\right)\rvert_{\gamma=\gamma_\text{min}}^{\gamma=\infty}\\
 			&= -C\frac{\gamma_\text{min}^{1+p}}{1+p} \longleftarrow 1+p < 0
 	\end{align*}
 
@@ -73,7 +73,7 @@
 \ans{\textcolor{red}{check algebra}}
 
 %%% 4
-\qitem{}
+\qitem{\textcolor{white}{bloop}}
 \ans{
 	\begin{align*}
 		E &= 2V(U_e + U_B)\\
@@ -88,17 +88,43 @@
 
 %%% 5
 \qitem{}
-\work{}
-\ans{}
+\work{
+	\begin{align*}
+		U_B &= \frac{3}{4}U_e\\
+		\frac{1}{8\pi}B^2 &= \frac{3}{4}A\frac{L_m\nu_m^\frac{1}{2}}{V}B^{-\frac{3}{2}}\\
+		AL_m\frac{\nu_m^\frac{1}{2}}{V}6\pi &= B^\frac{7}{2}\\
+		B &= \left(\frac{AL_m\nu_m^\frac{1}{2}}{V}\right)^\frac{2}{7}
+	\end{align*}
+	and then 
+	\begin{align*}
+		\gamma_\text{min} &\approx \sqrt{\frac{2\nu_m}{3\nu_\text{cyc}}}
+	\end{align*}}
+\ans{
+	\centering
+	\textcolor{red}{numerical}
+}
 
 %%% 6
 \qitem{}
-\work{}
-\ans{}
+\work{
+	\begin{align*}
+		E &= 2V (U_e + U_B)
+	\end{align*}}
+\ans{
+	\centering
+	\textcolor{red}{numerical}}
 
 %%% 7
-\qitem{}
-\work{}
-\ans{}
+\qitem{
+	\begin{itemize}
+		\item $E_\text{created} = \frac{1}{10}m_\text{food}c^2$
+	\end{itemize}}
+\work{
+	
+}
+\ans{
+	\centering
+	\textcolor{red}{Supermassive black holes are $10^5$ to $10^6$ times larger than the mass of the sun ($2\cdot 10^{33}\si{\gram}$)}
+}
 
 \end{enumerate}
